@@ -2,4 +2,4 @@ name: RegrowthWorldBorderExpander
 version: ${project.version}
 main: org.lushplugins.regrowthworldborderexpander.RegrowthWorldBorderExpander
 api-version: '1.21'
-github-repo: ProjectOwner/RegrowthWorldBorderExpander
+github-repo: RegrowthMC/RegrowthWorldBorderExpander
