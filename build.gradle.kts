@@ -1,6 +1,5 @@
 plugins {
     `java-library`
-    `maven-publish`
     id("com.gradleup.shadow") version("9.3.1")
     id("xyz.jpenilla.run-paper") version("3.0.2")
 }
@@ -22,6 +21,8 @@ dependencies {
     // Soft Dependencies
 
     // Libraries
+    implementation("io.github.revxrsal:lamp.common:4.0.0-rc.14")
+    implementation("io.github.revxrsal:lamp.bukkit:4.0.0-rc.14")
 }
 
 java {
@@ -56,37 +57,8 @@ tasks {
             expand("version" to rootProject.version)
         }
     }
-}
 
-publishing {
-    repositories {
-        maven {
-            name = "lushReleases"
-            url = uri("https://repo.lushplugins.org/releases")
-            credentials(PasswordCredentials::class)
-            authentication {
-                isAllowInsecureProtocol = true
-                create<BasicAuthentication>("basic")
-            }
-        }
-
-        maven {
-            name = "lushSnapshots"
-            url = uri("https://repo.lushplugins.org/snapshots")
-            credentials(PasswordCredentials::class)
-            authentication {
-                isAllowInsecureProtocol = true
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = rootProject.group.toString()
-            artifactId = rootProject.name
-            version = rootProject.version.toString()
-            from(project.components["java"])
-        }
+    runServer {
+        minecraftVersion("1.21.11")
     }
 }

@@ -1,26 +1,15 @@
 package org.lushplugins.regrowthworldborderexpander;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.lushplugins.regrowthworldborderexpander.command.WorldBorderExpandCommand;
+import revxrsal.commands.bukkit.BukkitLamp;
 
 public final class RegrowthWorldBorderExpander extends JavaPlugin {
-    private static RegrowthWorldBorderExpander plugin;
-
-    @Override
-    public void onLoad() {
-        plugin = this;
-    }
 
     @Override
     public void onEnable() {
-        // Enable implementation
-    }
-
-    @Override
-    public void onDisable() {
-        // Disable implementation
-    }
-
-    public static RegrowthWorldBorderExpander getInstance() {
-        return plugin;
+        BukkitLamp.builder(this)
+            .build()
+            .register(new WorldBorderExpandCommand());
     }
 }
